@@ -75,7 +75,7 @@ WITH IDENTITY = 'identity_name'
  If there is no login mapped credential for the provider, the credential mapped to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] service account is used.  
   
  A login can have multiple credentials mapped to it as long as they are used with distinctive providers. There must be only one mapped credential per provider per login. The same credential can be mapped to other logins.  
-  
+   
 ## Permissions  
  Requires **ALTER ANY CREDENTIAL** permission.  
   
@@ -144,6 +144,8 @@ EXEC ('CREATE CREDENTIAL Azure_EKM_TDE_cred
   
 > [!IMPORTANT]  
 >  THE **CREDENTIAL NAME** argument requires that the name match the container path, start with https and not contain a trailing forward slash. The **IDENTITY** argument requires the name, *SHARED ACCESS SIGNATURE*. The **SECRET** argument requires the shared access signature token.  
+
+>  The **SHARED ACCESS SIGNATURE secret** should not have the leading **?**
   
 ```  
 USE master  
