@@ -53,6 +53,7 @@ WITH IDENTITY = 'identity_name'
  IDENTITY **='**_identity\_name_**'**  
  Specifies the name of the account to be used when connecting outside the server. When the credential is used to access the Azure Key Vault, the **IDENTITY** is the name of the key vault. See example C below. When the credential is using a shared access signature (SAS), the **IDENTITY** is *SHARED ACCESS SIGNATURE*. See example D below.  
  
+ 
 > [!IMPORTANT]
 > Azure SQL Database only supports Azure Key Vault and Shared Access Signature identities. Windows user identities are not supported.
  
@@ -75,7 +76,7 @@ WITH IDENTITY = 'identity_name'
  If there is no login mapped credential for the provider, the credential mapped to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] service account is used.  
   
  A login can have multiple credentials mapped to it as long as they are used with distinctive providers. There must be only one mapped credential per provider per login. The same credential can be mapped to other logins.  
-  
+   
 ## Permissions  
  Requires **ALTER ANY CREDENTIAL** permission.  
   
@@ -144,6 +145,8 @@ EXEC ('CREATE CREDENTIAL Azure_EKM_TDE_cred
   
 > [!IMPORTANT]  
 >  THE **CREDENTIAL NAME** argument requires that the name match the container path, start with https and not contain a trailing forward slash. The **IDENTITY** argument requires the name, *SHARED ACCESS SIGNATURE*. The **SECRET** argument requires the shared access signature token.  
+
+>  The **SHARED ACCESS SIGNATURE secret** should not have the leading **?**
   
 ```  
 USE master  
